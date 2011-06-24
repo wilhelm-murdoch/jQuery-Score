@@ -1,0 +1,56 @@
+# jQuery Score Plugin
+
+DEMO: http://area51.thedrunkenepic.com/score/
+
+Nothing really incredible about this plugin. It allows one to easily apply scoring effects to you projects. Think of point increases in video games, but for HTML. It's actually much better explained through demonstration. Just click the link above marked as "DEMO."
+
+## Enable Scoring Effect
+
+To enable the scoring effect on matched elements, do the following:
+
+	$('span.pointElement').score({
+		prefix: '+',
+		value: 15,
+		suffix: 'pts.'
+	});
+
+In this particular example, you would see '+ 15 pts.' appear above the matched element and then float/fade away.
+
+This plugin is pretty customisable with plenty of options:
+
+	$('span.pointElement').score({
+		prefix: null,
+		value: null,
+		suffix: null,
+		class: null,
+		trail: 300,
+		padding: 20,
+		speed: 'slow',
+		onScore: function(object, options){
+			// this event fires off as soon as the effect finishes
+		},
+		target: {
+			top: 500,
+			left: 500
+		}
+	});
+
+Note the values displayed above are default for this plugin.
+
+1. `prefix` places a set of characters in front of the point `value`.
+2. `value` the actual value of the point increase.
+3. `suffix` places a set of characters in the end of the point `value`.
+4. `class` allows you to specify a custom CSS class to the effect. This is useful for providing different visual affects for different kinds of values, ie: # of coins v.s. # of experience points.
+5. `trail` how far, in pixels, the value floats until it disappears.
+6. `padding` in pixels, puts a bit of space between the matched element and the starting position of the effect.
+7. `speed` the speed at which the value fades and floats away. This accepts the same values as standard jQuery effects: `slow`, `fast`, or some number of milliseconds.
+8. `onScore` an event that is fired off when the score effect completes. Provides a reference, `object`, to the current element as well as the `options` associated with the effect.
+9. `target` an optional setting which allows you to specify a static position for the effect. It is an object with `top` and `left` positional properties. If left blank, the plugin will use the matched elements positional values instead.
+
+## CSS Stuff
+
+Although you can specify a custom CSS class for the scoring effect, there is another class, `.score`, which is automatically applied to all effects.
+
+## Note
+
+1. If you find any bugs or have suggestions for improvements do NOT hesitate to do a pull request. :)
